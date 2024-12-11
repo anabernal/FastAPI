@@ -12,6 +12,8 @@ class Post(Base):
 
 class vpn(Base):
     __tablename__="vpns"
+    direccionIPRoshka=Column(String,nullable=False)
+    direccionIPCliente=Column(String,nullable=False)
     clienteExterno=Column(String,nullable=False)
     marcaEquipoRoshka=Column(String,nullable=False)
     versionEquipoRoshka=Column(String,nullable=False)
@@ -26,5 +28,7 @@ class vpn(Base):
     algoritmoEncriptacion=Column(String,nullable=False)
     pfs=Column(Boolean, nullable=False)
     lifetime=Column(Integer,nullable=False)
+    dominioEncriptacionRoshka=Column(String,nullable=False)
+    dominoEncriptacionCliente=Column(String,nullable=False)
 
     
