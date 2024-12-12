@@ -10,11 +10,12 @@ class Post(Base):
     published=Column(Boolean, server_default='True', nullable=False)
     created_at=Column(TIMESTAMP(timezone=True),nullable=False,server_default=text('now()'))
 
-class vpn(Base):
+class Vpn(Base):
     __tablename__="vpns"
+    id=Column(Integer, primary_key=True, nullable=False)
+    nombreClienteExterno=Column(String,nullable=False)
     direccionIPRoshka=Column(String,nullable=False)
     direccionIPCliente=Column(String,nullable=False)
-    clienteExterno=Column(String,nullable=False)
     marcaEquipoRoshka=Column(String,nullable=False)
     versionEquipoRoshka=Column(String,nullable=False)
     marcaEquipoCliente=Column(String,nullable=False)
@@ -22,13 +23,15 @@ class vpn(Base):
     claveCompartida=Column(String,nullable=False)
     esquemaDeEncriptacion=Column(String,nullable=False)
     grupoDH=Column(String,nullable=False)
+    algoritmoEncriptacion_fase1=Column(String,nullable=False)
+    hash_fase1=Column(String,nullable=False)
     mainOAggressive=Column(String,nullable=False)
-    lifetime=Column(Integer,nullable=False)
+    lifetime_fase1=Column(Integer,nullable=False)
     encapsulacion=Column(String,nullable=False)
-    algoritmoEncriptacion=Column(String,nullable=False)
-    pfs=Column(Boolean, nullable=False)
-    lifetime=Column(Integer,nullable=False)
+    algoritmoEncriptacion_fase2=Column(String,nullable=False)
+    hash_fase2=Column(String,nullable=False)
+    pfs=Column(Boolean, server_default='False', nullable=False)
+    lifetime_fase2=Column(Integer,nullable=False)
     dominioEncriptacionRoshka=Column(String,nullable=False)
     dominoEncriptacionCliente=Column(String,nullable=False)
-
-    
+    created_at=Column(TIMESTAMP(timezone=True),nullable=False,server_default=text('now()'))

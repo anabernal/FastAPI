@@ -9,9 +9,9 @@ class PostCreate(PostBase):
 
 
 class VpnBase(BaseModel):
+    nombreClienteExterno:str
     direccionIPRoshka:str
     direccionIPCliente:str
-    clienteExterno:str
     marcaEquipoRoshka:str
     versionEquipoRoshka:str
     marcaEquipoCliente:str
@@ -19,27 +19,32 @@ class VpnBase(BaseModel):
     claveCompartida:str
     esquemaDeEncriptacion:str
     grupoDH:str
+    algoritmoEncriptacion_fase1:str
+    hash_fase1:str
     mainOAggressive:str
-    lifetime:int
-    encapsulacion:bool=True
-    algoritmoEncriptacion:str
-    pfs=bool
-    lifetime:str
+    lifetime_fase1:int
+    encapsulacion:str
+    algoritmoEncriptacion_fase2:str
+    hash_fase2:str
+    pfs:bool=False
+    lifetime_fase2:int
     dominioEncriptacionRoshka:str
     dominoEncriptacionCliente:str
-
-class VpnCreate(PostBase):
+	
+class VpnCreate(VpnBase):
     pass
 
-class VpnUpdateRoshka(PostBase):
+class VpnUpdateRoshka(VpnBase):
     pass
 
-class VpnUpdateCliente(PostBase):
-    clienteExterno:str
+class VpnUpdateCliente(BaseModel):
+    nombreClienteExterno:str
     direccionIPCliente:str
     marcaEquipoCliente:str
     versionEquipoCliente:str
-    claveCompartida:str
     dominoEncriptacionCliente:str
+
+
+
 
 
