@@ -35,3 +35,31 @@ class Vpn(Base):
     dominioEncriptacionRoshka=Column(String,nullable=False)
     dominoEncriptacionCliente=Column(String,nullable=False)
     created_at=Column(TIMESTAMP(timezone=True),nullable=False,server_default=text('now()'))
+
+
+def vpn_to_json(self):
+        return {
+            'id':self.id,
+            'nombreClienteExterno':self.nombreClienteExterno,
+            'direccionIPRoshka':self.direccionIPRoshka,
+            'direccionIPCliente':self.direccionIPCliente,
+            'marcaEquipoRoshka':self.marcaEquipoRoshka,
+            'versionEquipoRoshka':self.versionEquipoRoshka,
+            'marcaEquipoCliente':self.marcaEquipoCliente,
+            'versionEquipoCliente':self.versionEquipoCliente,
+            'claveCompartida':self.claveCompartida,
+            'esquemaDeEncriptacion':self.esquemaDeEncriptacion,
+            'grupoDH':self.grupoDH,
+            'algoritmoEncriptacion_fase1':self.algoritmoEncriptacion_fase1,
+            'hash_fase1':self.hash_fase1,
+            'mainOAggressive':self.mainOAggressive,
+            'lifetime_fase1':self.lifetime_fase1,
+            'encapsulacion':self.encapsulacion,
+            'algoritmoEncriptacion_fase2':self.algoritmoEncriptacion_fase2,
+            'hash_fase2':self.hash_fase2,
+            'pfs':self.pfs,
+            'lifetime_fase2':self.lifetime_fase2,
+            'dominioEncriptacionRoshka':self.dominioEncriptacionRoshka,
+            'dominoEncriptacionCliente':self.dominoEncriptacionCliente,
+            'created_at':self.created_at
+        }

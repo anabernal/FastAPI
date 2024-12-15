@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+ 
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <a href="addnew/" class="btn btn-primary">Add New</a>
+        <br><br>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente externo</th>
+                    <th width="200">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for v in vpns %}
+                    <tr>
+                        <td>{{ v.id }}</td>
+                        <td>{{ v.nombreClienteExterno }}</td>
+                        <td>
+                            <a href="/vpns/edit/{{ v.id }}" class="btn btn-success">Edit</a> | <a href="/vpns/delete/{{ v.id }}" class="btn btn-danger">Delete</a>  
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+</div>
+ 
+{% endblock content %}
