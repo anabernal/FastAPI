@@ -25,6 +25,68 @@ def get_vpns(request:Request, db:Session=Depends(get_db)):
 
 
 
+"""@router.post("/vpns", status_code=status.HTTP_201_CREATED)
+def create_vpns(vpn:schemas.VpnCreate, db:Session=Depends(get_db)):
+    new_vpn=models.Vpn(
+        **vpn.model_dump())
+    db.add(new_vpn)
+    db.commit()
+    db.refresh(new_vpn)
+    return{"data":new_vpn}"""
+
+@router.post("/vpns/add")
+async def add(
+    request: Request, 
+    nombreClienteExterno:str= Form(...),
+    direccionIPRoshka:str= Form(...),
+    direccionIPCliente:str= Form(...),
+    marcaEquipoRoshka:str= Form(...),
+    versionEquipoRoshka:str= Form(...),
+    marcaEquipoCliente:str= Form(...),
+    versionEquipoCliente:str= Form(...),
+    claveCompartida:str= Form(...),
+    esquemaDeEncriptacion:str= Form(...),
+    grupoDH:str= Form(...),
+    algoritmoEncriptacion_fase1:str= Form(...),
+    hash_fase1:str= Form(...),
+    mainOAggressive:str= Form(...),
+    lifetime_fase1:int= Form(...),
+    encapsulacion:str= Form(...),
+    algoritmoEncriptacion_fase2:str= Form(...),
+    hash_fase2:str= Form(...),
+    pfs:bool= Form(...),
+    lifetime_fase2:int= Form(...),
+    dominioEncriptacionRoshka:str= Form(...),
+    dominoEncriptacionCliente:str= Form(...), 
+    db: Session = Depends(get_db)):
+
+ 
+    vpn = models.Vpn(
+    nombreClienteExterno =nombreClienteExterno,
+    direccionIPRoshka=direccionIPRoshka,
+    direccionIPCliente=direccionIPCliente,
+    marcaEquipoRoshka=marcaEquipoRoshka,
+    versionEquipoRoshka=versionEquipoRoshka,
+    marcaEquipoCliente=marcaEquipoCliente,
+    versionEquipoCliente=versionEquipoCliente,
+    claveCompartida=claveCompartida,
+    esquemaDeEncriptacion=esquemaDeEncriptacion,
+    grupoDH=grupoDH,
+    algoritmoEncriptacion_fase1=algoritmoEncriptacion_fase1,
+    hash_fase1=hash_fase1,
+    mainOAggressive=mainOAggressive,
+    lifetime_fase1=lifetime_fase1,
+    encapsulacion=encapsulacion,
+    algoritmoEncriptacion_fase2=algoritmoEncriptacion_fase2,
+    hash_fase2=hash_fase2,
+    pfs=pfs,
+    lifetime_fase2=lifetime_fase2,
+    dominioEncriptacionRoshka=dominioEncriptacionRoshka,
+    dominoEncriptacionCliente=dominoEncriptacionCliente)
+    db.add(vpn)
+    db.commit()
+    return RedirectResponse(url=router.url_path_for("get_vpns"), status_code=status.HTTP_303_SEE_OTHER)
+
 @router.post("/vpns", status_code=status.HTTP_201_CREATED)
 def create_vpns(vpn:schemas.VpnCreate, db:Session=Depends(get_db)):
     new_vpn=models.Vpn(
@@ -33,6 +95,10 @@ def create_vpns(vpn:schemas.VpnCreate, db:Session=Depends(get_db)):
     db.commit()
     db.refresh(new_vpn)
     return{"data":new_vpn}
+
+@router.get("/vpns/addnew")
+async def addnew(request: Request):
+    return templates.TemplateResponse("addnew.html", {"request": request})
 
 @router.get("/vpns/{id}")
 def get_vpn(id:int, db: Session=Depends(get_db)):

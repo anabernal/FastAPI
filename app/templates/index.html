@@ -4,7 +4,7 @@
 {% block content %}
 <div class="row">
     <div class="col-12">
-        <a href="addnew/" class="btn btn-primary">Add New</a>
+        <a href="/vpns/addnew" class="btn btn-primary">Add New</a>
         <br><br>
         <table class="table table-bordered table-striped">
             <thead>
@@ -20,7 +20,7 @@
                         <td>{{ v.id }}</td>
                         <td>{{ v.nombreClienteExterno }}</td>
                         <td>
-                            <a href="/vpns/edit/{{ v.id }}" class="btn btn-success">Edit</a> | <a href="/vpns/delete/{{ v.id }}" class="btn btn-danger">Delete</a>  
+                        <a href="/vpns/edit/{{ v.id }}" class="btn btn-success">Editar</a> <a href="/vpns/delete/{{ v.id }}" class="btn btn-danger">Delete</a><a href="/vpns/{{ v.id }}" class="btn btn-primary">Json</a> 
                         </td>
                     </tr>
                 {% endfor %}    

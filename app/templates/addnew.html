@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<form action = "/vpns/add" method = "post"> 
+    <div class="mb-3">
+        <label>Cliente Externo</label>
+        <input type = "text" name = "nombreClienteExterno" placeholder = "Nombre del Cliente Externo*" class="form-control" />
+    </div> 
+    <div class="mb-3">
+        <label>Direccion publica Roshka</label>
+        <input type = "text" name = "direccionIPRoshka" placeholder = "IP Publica Roshka*" class="form-control" />
+    </div> 
+    <div class="mb-3">
+        <label>Direccion IP cliente</label>
+        <input type = "text" name = "direccionIPCliente" placeholder = "IP Publica del Cliente*" class="form-control" />
+    </div> 
+    <div class="mb-3">
+        <label>Marca  de Equipo de Roshka</label>
+        <input type = "text" name = "marcaEquipoRoshka" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" />
+    </div> 
+    <div class="mb-3">
+        <label>Version de equipo de Roshka</label>
+        <input type = "text" name = "versionEquipoRoshka" placeholder = "Version del sistema operativo del equipo*" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Marca de Equipo de Cliente</label>
+        <input type = "text" name = "marcaEquipoCliente" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Version de equipo de Cliente</label>
+        <input type = "text" name = "versionEquipoCliente" placeholder = "Version del sistema operativo del equipo*" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Clave compartida</label>
+        <input type = "password" id= "claveCompartida" name = "claveCompartida" placeholder = "Clave compartida*" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Esquema de encriptacion</label>
+        <input type = "text" name = "esquemaDeEncriptacion" placeholder = "IKEv1 o IKEv1" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Grupo DH</label>
+        <input type = "text" name = "grupoDH" placeholder = "Enumerar el grupo(19, 21, 31, y/o 32, )" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Algortimo de encriptacion (Fase 1)</label>
+        <input type = "text" name = "algoritmoEncriptacion_fase1" placeholder = "aes128, aes256" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Hash (Fase 1)  </label>
+        <input type = "text" name = "hash_fase1" placeholder = "sha1,sha256,md5 " class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Main o aggressive</label>
+        <input type = "text" name = "mainOAggressive" placeholder = "Main o Aggressive mode" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Lifetime (Fase 1)</label>
+        <input type = "Integer" name = "lifetime_fase1" placeholder = "Tiempo en segundos*" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Encapsulacion</label>
+        <input type = "text" name = "encapsulacion" placeholder = "ESP o AH*" class="form-control" />
+    <div class="mb-3">
+        <label>Algortimo de encriptacion fase 2</label>
+        <input type = "text" name = "algoritmoEncriptacion_fase2" placeholder = "aes128, aes256" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Hash (Fase 2)  </label>
+        <input type = "text" name = "hash_fase2" placeholder = "sha1,sha256,md5 " class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Main o aggressive</label>
+        <input type = "text" name = "mainOAggressive" placeholder = "Main o aggressive* "  class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>PFS Habilitado</label>
+        <input type = "text" name = "pfs" placeholder = "Si o NO" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Lifetime (Fase 2)</label>
+        <input type = "Integer" name = "lifetime_fase2" placeholder = "Tiempo en segundos" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Dominio de Encriptacion de Roshka</label>
+        <input type = "text" name = "dominioEncriptacionRoshka" placeholder = "Red/redes que se conectaran a la Red del cliente*" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Dominio de Encriptacion de Cliente</label>
+        <input type = "text" name = "dominoEncriptacionCliente" placeholder = "Red/redes que se conectaran a la Roshka*" class="form-control" />
+    </div>
+
+    <input type = "submit" value = "Submit" class="btn btn-primary mb-3"/>  
+ </form> 
+  
+{% endblock content %}

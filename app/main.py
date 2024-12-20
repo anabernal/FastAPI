@@ -7,9 +7,11 @@ from fastapi.templating import Jinja2Templates
 from random import randrange
 import psycopg2
 from psycopg2.extras import RealDictCursor
+from sqlalchemy.orm import Session 
+
 import time
 from .import models, schemas 
-from sqlalchemy.orm import Session 
+
 from .database import engine, get_db
 from .routers import post, vpn
 app = FastAPI()
