@@ -21,9 +21,7 @@ class VpnBase(BaseModel):
     grupoDH:str
     algoritmoEncriptacion_fase1:str
     hash_fase1:str
-    mainOAggressive:str
     lifetime_fase1:int
-    encapsulacion:str
     algoritmoEncriptacion_fase2:str
     hash_fase2:str
     pfs:bool=False

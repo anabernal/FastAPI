@@ -8,7 +8,10 @@
     </div> 
     <div class="mb-3">
         <label>Direccion publica Roshka</label>
-        <input type = "text" name = "direccionIPRoshka" placeholder = "IP Publica Roshka*" class="form-control" />
+        <input type = "text" name = "direccionIPRoshka" placeholder = "IP Publica Roshka*" class="form-control" id="direccionIPRoshka"
+        pattern="^(?!10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-5])\.(?:\d{1,3})\.(?:\d{1,3})\.(?:\d{1,3})$" 
+        required  />
+        <label class="form-check-label" for="direccionIPRoshka">IP incorrecta*</label>
     </div> 
     <div class="mb-3">
         <label>Direccion IP cliente</label>
@@ -35,48 +38,73 @@
         <input type = "password" id= "claveCompartida" name = "claveCompartida" placeholder = "Clave compartida*" class="form-control" />
     </div>
     <div class="mb-3">
-        <label>Esquema de encriptacion</label>
-        <input type = "text" name = "esquemaDeEncriptacion" placeholder = "IKEv1 o IKEv1" class="form-control" />
+        <label for="esquemaDeEncriptacion">Esquema de Encriptacion</label>
+        <select name="esquemaDeEncriptacion" id="esquemaDeEncriptacion" class="form-control">
+            <option value="IKEv1">IKEv1</option>
+            <option value="IKEv2">IKEv2</option>
+          </select>
     </div>
     <div class="mb-3">
-        <label>Grupo DH</label>
-        <input type = "text" name = "grupoDH" placeholder = "Enumerar el grupo(19, 21, 31, y/o 32, )" class="form-control" />
+        <label for="grupoDH">Grupo DH</label>
+        <select name="grupoDH" id="grupoDH" class="form-control">
+            <option value="2">2</option>
+            <option value="5">5</option>
+            <option value="14">14</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+          </select>
     </div>
     <div class="mb-3">
-        <label>Algortimo de encriptacion (Fase 1)</label>
-        <input type = "text" name = "algoritmoEncriptacion_fase1" placeholder = "aes128, aes256" class="form-control" />
+        <label for="algoritmoEncriptacion_fase1">Algortimo de encriptacion (Fase 1)</label>
+        <select name="algoritmoEncriptacion_fase1" id="algoritmoEncriptacion_fase1" class="form-control">
+            <option value="AES-128">AES-128</option>
+            <option value="AES-192">AES-192</option>
+            <option value="AES-256">AES-256</option>
+            <option value="3DES">3DES</option>
+          </select>
     </div>
     <div class="mb-3">
-        <label>Hash (Fase 1)  </label>
-        <input type = "text" name = "hash_fase1" placeholder = "sha1,sha256,md5 " class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label>Main o aggressive</label>
-        <input type = "text" name = "mainOAggressive" placeholder = "Main o Aggressive mode" class="form-control" />
+        <label for="hash_fase1">Hash(Fase 1)</label>
+        <select name="hash_fase1" id="hash_fase1" class="form-control">
+            <option value="SHA-1">SHA-1</option>
+            <option value="SHA-256">SHA-256</option>
+            <option value="SHA-384">SHA-384</option>
+            <option value="SHA-512">SHA-512</option>
+            <option value="MD5">MD5</option>
+          </select>
     </div>
     <div class="mb-3">
         <label>Lifetime (Fase 1)</label>
         <input type = "Integer" name = "lifetime_fase1" placeholder = "Tiempo en segundos*" class="form-control" />
     </div>
     <div class="mb-3">
-        <label>Encapsulacion</label>
-        <input type = "text" name = "encapsulacion" placeholder = "ESP o AH*" class="form-control" />
+            <label for="algoritmoEncriptacion_fase2">Algortimo de encriptacion (Fase 1)</label>
+            <select name="algoritmoEncriptacion_fase2" id="algoritmoEncriptacion_fase2" class="form-control">
+                <option value="AES-128">AES-128</option>
+                <option value="AES-192">AES-192</option>
+                <option value="AES-256">AES-256</option>
+                <option value="3DES">3DES</option>
+              </select>
+        </div>
     <div class="mb-3">
-        <label>Algortimo de encriptacion fase 2</label>
-        <input type = "text" name = "algoritmoEncriptacion_fase2" placeholder = "aes128, aes256" class="form-control" />
+        <label for="hash_fase2">Hash(Fase 1)</label>
+        <select name="hash_fase2" id="hash_fase2" class="form-control">
+            <option value="SHA-1">SHA-1</option>
+            <option value="SHA-256">SHA-256</option>
+            <option value="SHA-384">SHA-384</option>
+            <option value="SHA-512">SHA-512</option>
+            <option value="MD5">MD5</option>
+        </select>
     </div>
     <div class="mb-3">
-        <label>Hash (Fase 2)  </label>
-        <input type = "text" name = "hash_fase2" placeholder = "sha1,sha256,md5 " class="form-control" />
+        <label for="pfs">PFS</label>
+        <select name="pfs" id="pfs" class="form-control">
+            <option value="SI">SI</option>
+            <option value="NO">NO</option>
+          </select>
     </div>
-    <div class="mb-3">
-        <label>Main o aggressive</label>
-        <input type = "text" name = "mainOAggressive" placeholder = "Main o aggressive* "  class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label>PFS Habilitado</label>
-        <input type = "text" name = "pfs" placeholder = "Si o NO" class="form-control" />
-    </div>
+<div class="mb-3">
     <div class="mb-3">
         <label>Lifetime (Fase 2)</label>
         <input type = "Integer" name = "lifetime_fase2" placeholder = "Tiempo en segundos" class="form-control" />

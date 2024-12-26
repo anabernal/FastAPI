@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
-
+from ipaddress import ip_address
 import os
 
 templates_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "templates")
@@ -24,16 +24,6 @@ def get_vpns(request:Request, db:Session=Depends(get_db)):
     return templates.TemplateResponse("index.html", {"request": request,"vpns":vpns })
 
 
-
-"""@router.post("/vpns", status_code=status.HTTP_201_CREATED)
-def create_vpns(vpn:schemas.VpnCreate, db:Session=Depends(get_db)):
-    new_vpn=models.Vpn(
-        **vpn.model_dump())
-    db.add(new_vpn)
-    db.commit()
-    db.refresh(new_vpn)
-    return{"data":new_vpn}"""
-
 @router.post("/vpns/add")
 async def add(
     request: Request, 
@@ -49,18 +39,17 @@ async def add(
     grupoDH:str= Form(...),
     algoritmoEncriptacion_fase1:str= Form(...),
     hash_fase1:str= Form(...),
-    mainOAggressive:str= Form(...),
     lifetime_fase1:int= Form(...),
-    encapsulacion:str= Form(...),
     algoritmoEncriptacion_fase2:str= Form(...),
     hash_fase2:str= Form(...),
-    pfs:bool= Form(...),
+    pfs:str= Form(...),
     lifetime_fase2:int= Form(...),
     dominioEncriptacionRoshka:str= Form(...),
     dominoEncriptacionCliente:str= Form(...), 
     db: Session = Depends(get_db)):
 
- 
+    
+
     vpn = models.Vpn(
     nombreClienteExterno =nombreClienteExterno,
     direccionIPRoshka=direccionIPRoshka,
@@ -74,9 +63,7 @@ async def add(
     grupoDH=grupoDH,
     algoritmoEncriptacion_fase1=algoritmoEncriptacion_fase1,
     hash_fase1=hash_fase1,
-    mainOAggressive=mainOAggressive,
     lifetime_fase1=lifetime_fase1,
-    encapsulacion=encapsulacion,
     algoritmoEncriptacion_fase2=algoritmoEncriptacion_fase2,
     hash_fase2=hash_fase2,
     pfs=pfs,
