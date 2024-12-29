@@ -17,7 +17,7 @@
             <label>Direccion Publica Roshka</label>
             <input type = "text" name = "direccionIPRoshka" placeholder = "Name" class="form-control" value="{{vpn.direccionIPRoshka}}"
             pattern="^(?!10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-5])\.(?:\d{1,3})\.(?:\d{1,3})\.(?:\d{1,3})$" 
-            required/>
+            required readonly/>
         </div>   
         <div class="mb-3">
             <label>Direccion IP cliente</label>
@@ -25,11 +25,11 @@
         </div>
         <div class="mb-3">
             <label>Marca  de Equipo de Roshka</label>
-            <input type = "text" name = "marcaEquipoRoshka" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" value="{{vpn.marcaEquipoRoshka}}" />
+            <input type = "text" name = "marcaEquipoRoshka" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" value="{{vpn.marcaEquipoRoshka}}" readonly />
         </div> 
         <div class="mb-3">
             <label>Version de equipo de Roshka</label>
-            <input type = "text" name = "versionEquipoRoshka" placeholder = "Version del sistema operativo del equipo*" class="form-control" value="{{vpn.versionEquipoRoshka}}"/>
+            <input type = "text" name = "versionEquipoRoshka" placeholder = "Version del sistema operativo del equipo*" class="form-control" value="{{vpn.versionEquipoRoshka}}" readonly/>
         </div>
         <div class="mb-3">
             <label>Marca de Equipo de Cliente</label>
@@ -37,22 +37,22 @@
         </div>
         <div class="mb-3">
             <label>Version de equipo de Cliente</label>
-            <input type = "text" name = "versionEquipoCliente" placeholder = "Version del sistema operativo del equipo*" class="form-control" value= "{{vpn.versionEquipoCliente}}"/>
+            <input type = "text" name = "versionEquipoCliente" placeholder = "Version del sistema operativo del equipo*" class="form-control" value= "{{vpn.versionEquipoCliente}}" />
         </div>
         <div class="mb-3">
             <label>Clave compartida</label>
-            <input type = "password" id= "claveCompartida" name = "claveCompartida" placeholder = "Clave compartida*" class="form-control" value="{{vpn.claveCompartida}}"/>
+            <input type = "password" id= "claveCompartida" name = "claveCompartida" placeholder = "Clave compartida*" class="form-control" value="{{vpn.claveCompartida}}" />
         </div>
         <div class="mb-3">
             <label for="esquemaDeEncriptacion">Esquema de Encriptacion</label>
-            <select name="esquemaDeEncriptacion" id="esquemaDeEncriptacion" class="form-control" value="{{vpn.esquemaDeEncriptacion}}">
+            <select name="esquemaDeEncriptacion" id="esquemaDeEncriptacion" class="form-control" value="{{vpn.esquemaDeEncriptacion}}" readonly>
                 <option value="IKEv1">IKEv1</option>
                 <option value="IKEv2">IKEv2</option>
               </select>
         </div>
         <div class="mb-3">
             <label for="grupoDH">Grupo DH</label>
-            <select name="grupoDH" id="grupoDH" class="form-control" value="{{vpn.grupoDH}}">
+            <select name="grupoDH" id="grupoDH" class="form-control" value="{{vpn.grupoDH}}" readonly>
                 <option value="2">2</option>
                 <option value="5">5</option>
                 <option value="14">14</option>
@@ -63,7 +63,7 @@
         </div>
         <div class="mb-3">
             <label for="algoritmoEncriptacion_fase1">Algortimo de encriptacion (Fase 1)</label>
-            <select name="algoritmoEncriptacion_fase1" id="algoritmoEncriptacion_fase1" class="form-control" value="{{vpn.algoritmoEncriptacion_fase1}}">
+            <select name="algoritmoEncriptacion_fase1" id="algoritmoEncriptacion_fase1" class="form-control" value="{{vpn.algoritmoEncriptacion_fase1}}" readonly>
                 <option value="AES-128">AES-128</option>
                 <option value="AES-192">AES-192</option>
                 <option value="AES-256">AES-256</option>
@@ -72,7 +72,7 @@
         </div>
          <div class="mb-3">
         <label for="hash_fase1">Hash(Fase 1)</label>
-        <select name="hash_fase1" id="hash_fase1" class="form-control" value="{{vpn.hash_fase1}}" >
+        <select name="hash_fase1" id="hash_fase1" class="form-control" value="{{vpn.hash_fase1}}" readonly  >
             <option value="SHA-1">SHA-1</option>
             <option value="SHA-256">SHA-256</option>
             <option value="SHA-384">SHA-384</option>
@@ -82,11 +82,11 @@
         </div>
         <div class="mb-3">
             <label>Lifetime (Fase 1)</label>
-            <input type = "Integer" name = "lifetime_fase1" placeholder = "Tiempo en segundos*" class="form-control" value="{{vpn.lifetime_fase1}}" />
+            <input type = "Integer" name = "lifetime_fase1" placeholder = "Tiempo en segundos*" class="form-control" value="{{vpn.lifetime_fase1}}" readonly/>
         </div>
         <div class="mb-3">
             <label for="algoritmoEncriptacion_fase2">Algortimo de encriptacion (Fase 1)</label>
-            <select name="algoritmoEncriptacion_fase2" id="algoritmoEncriptacion_fase2" class="form-control" value="{{vpn.algoritmoEncriptacion_fase2}} " >
+            <select name="algoritmoEncriptacion_fase2" id="algoritmoEncriptacion_fase2" class="form-control" value="{{vpn.algoritmoEncriptacion_fase2}}" readonly>
                 <option value="AES-128">AES-128</option>
                 <option value="AES-192">AES-192</option>
                 <option value="AES-256">AES-256</option>
@@ -96,7 +96,7 @@
 
         <div class="mb-3">
             <label for="hash_fase2">Hash(Fase 1)</label>
-            <select name="hash_fase2" id="hash_fase2" class="form-control"  value="{{vpn.hash_fase2}}">
+            <select name="hash_fase2" id="hash_fase2" class="form-control"  value="{{vpn.hash_fase2}}" readonly>
                 <option value="SHA-1">SHA-1</option>
                 <option value="SHA-256">SHA-256</option>
                 <option value="SHA-384">SHA-384</option>
@@ -106,7 +106,7 @@
         </div>
         <div class="mb-3">
             <label for="pfs">PFS</label>
-            <select name="pfs" id="pfs" class="form-control" value="{{vpn.pfs}}">
+            <select name="pfs" id="pfs" class="form-control" value="{{vpn.pfs}}" readonly>
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
               </select>
@@ -115,11 +115,11 @@
         <div class="mb-3">
             <div class="mb-3">
                 <label>Lifetime (Fase 2)</label>
-                <input type = "Integer" name = "lifetime_fase2" placeholder = "Tiempo en segundos" class="form-control" value="{{vpn.lifetime_fase2}}" />
+                <input type = "Integer" name = "lifetime_fase2" placeholder = "Tiempo en segundos" class="form-control" value="{{vpn.lifetime_fase2}}" readonly />
         </div>
         <div class="mb-3">
             <label>Dominio de Encriptacion de Roshka</label>
-            <input type = "text" name = "dominioEncriptacionRoshka" placeholder = "Red/redes de Roshka que se conectaran a la Red del cliente*" class="form-control" value="{{vpn.dominioEncriptacionRoshka}}" />
+            <input type = "text" name = "dominioEncriptacionRoshka" placeholder = "Red/redes de Roshka que se conectaran a la Red del cliente*" class="form-control" value="{{vpn.dominioEncriptacionRoshka}}" readonly />
         </div>
         <div class="mb-3">
             <label>Dominio de Encriptacion de Cliente</label>

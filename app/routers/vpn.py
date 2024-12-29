@@ -16,6 +16,7 @@ templates = Jinja2Templates(directory=templates_dir)
 router=APIRouter(
     tags=['Vpn']
 )
+router.mount("/routers/vpns",StaticFiles(directory="app/routers/"))
 
 @router.get("/vpns")
 def get_vpns(request:Request, db:Session=Depends(get_db)):
@@ -28,6 +29,7 @@ def get_vpns(request:Request, db:Session=Depends(get_db)):
 async def add(
     request: Request, 
     nombreClienteExterno:str= Form(...),
+    rol:str= Form(...),
     direccionIPRoshka:str= Form(...),
     direccionIPCliente:str= Form(...),
     marcaEquipoRoshka:str= Form(...),
@@ -52,6 +54,7 @@ async def add(
 
     vpn = models.Vpn(
     nombreClienteExterno =nombreClienteExterno,
+    rol =rol,
     direccionIPRoshka=direccionIPRoshka,
     direccionIPCliente=direccionIPCliente,
     marcaEquipoRoshka=marcaEquipoRoshka,
@@ -110,12 +113,64 @@ def edit(request: Request, id: int, db: Session = Depends(get_db)):
     vpn = db.query(models.Vpn).filter(models.Vpn.id == id).first()
     return templates.TemplateResponse("edit.html", {"request": request, "vpn": vpn})
 
+@router.get("/vpns/editcliente/{id}")
+def edit(request: Request, id: int, db: Session = Depends(get_db)):
+    vpn = db.query(models.Vpn).filter(models.Vpn.id == id).first()
+    return templates.TemplateResponse("editcliente.html", {"request": request, "vpn": vpn})
+
 @router.post("/vpns/update/{id}")
-def update(request: Request, id: int,nombreClienteExterno: str = Form(...),db: Session = Depends(get_db)):
+def update(request: Request,         
+    id: int, 
+    nombreClienteExterno: str = Form(...),
+    rol: str = Form(...),
+    direccionIPRoshka: str = Form(...),
+    direccionIPCliente: str = Form(...),
+    marcaEquipoRoshka:str= Form(...),
+    versionEquipoRoshka:str= Form(...),
+    marcaEquipoCliente:str= Form(...),
+    versionEquipoCliente:str= Form(...),
+    claveCompartida:str= Form(...),
+    esquemaDeEncriptacion:str= Form(...),
+    grupoDH:str= Form(...),
+    algoritmoEncriptacion_fase1:str= Form(...),
+    hash_fase1:str= Form(...),
+    lifetime_fase1:int= Form(...),
+    algoritmoEncriptacion_fase2:str= Form(...),
+    hash_fase2:str= Form(...),
+    pfs:str= Form(...),
+    lifetime_fase2:int= Form(...),
+    dominioEncriptacionRoshka:str= Form(...),
+    dominoEncriptacionCliente:str= Form(...), 
+    db: Session = Depends(get_db)):
+
     vpns = db.query(models.Vpn).filter(models.Vpn.id == id).first()
     vpns.nombreClienteExterno = nombreClienteExterno
+    vpns.rol=rol
+    vpns.direccionIPRoshka = direccionIPRoshka
+    vpns.direccionIPCliente=direccionIPCliente
+    nombreClienteExterno =nombreClienteExterno,
+    rol =rol,
+    direccionIPRoshka=direccionIPRoshka,
+    direccionIPCliente=direccionIPCliente,
+    marcaEquipoRoshka=marcaEquipoRoshka,
+    versionEquipoRoshka=versionEquipoRoshka,
+    marcaEquipoCliente=marcaEquipoCliente,
+    versionEquipoCliente=versionEquipoCliente,
+    claveCompartida=claveCompartida,
+    esquemaDeEncriptacion=esquemaDeEncriptacion,
+    grupoDH=grupoDH,
+    algoritmoEncriptacion_fase1=algoritmoEncriptacion_fase1,
+    hash_fase1=hash_fase1,
+    lifetime_fase1=lifetime_fase1,
+    algoritmoEncriptacion_fase2=algoritmoEncriptacion_fase2,
+    hash_fase2=hash_fase2,
+    pfs=pfs,
+    lifetime_fase2=lifetime_fase2,
+    dominioEncriptacionRoshka=dominioEncriptacionRoshka,
+    dominoEncriptacionCliente=dominoEncriptacionCliente
+    
+
     db.commit()
-    #return RedirectResponse(url=router.url_path_for("index.html"), status_code=status.HTTP_303_SEE_OTHER)
     return RedirectResponse(url=router.url_path_for("get_vpns"), status_code=status.HTTP_303_SEE_OTHER)
 
 @router.get("/vpns/delete/{id}",status_code=status.HTTP_204_NO_CONTENT)

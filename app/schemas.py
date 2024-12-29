@@ -1,15 +1,9 @@
 from pydantic import BaseModel
-class PostBase(BaseModel):
-    title:str
-    content:str
-    published: bool=True
-
-class PostCreate(PostBase):
-    pass
 
 
 class VpnBase(BaseModel):
     nombreClienteExterno:str
+    rol:str
     direccionIPRoshka:str
     direccionIPCliente:str
     marcaEquipoRoshka:str
@@ -37,6 +31,7 @@ class VpnUpdateRoshka(VpnBase):
 
 class VpnUpdateCliente(BaseModel):
     nombreClienteExterno:str
+    rol:str
     direccionIPCliente:str
     marcaEquipoCliente:str
     versionEquipoCliente:str
