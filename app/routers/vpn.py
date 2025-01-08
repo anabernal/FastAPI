@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
-from ipaddress import ip_address
+from ipaddress import IPv4Address, IPv4Network
 import os
 
 templates_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "templates")
@@ -17,6 +17,10 @@ router=APIRouter(
     tags=['Vpn']
 )
 router.mount("/routers/vpns",StaticFiles(directory="app/routers/"))
+
+def validarIpPublica(ip):
+    if (IPv4Address(ip) in IPv4Network("10.0.0.0/8")) or (IPv4Address(ip) in IPv4Network("172.16.0.0/12"))  or (IPv4Address(ip) in IPv4Network("192.168.0.0/16")):
+         
 
 @router.get("/vpns")
 def get_vpns(request:Request, db:Session=Depends(get_db)):
@@ -97,16 +101,6 @@ def get_vpn(id:int, db: Session=Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail =f"Vpn con ID {id} no existente")
   return {"vpn_detail":vpn}
 
-
-"""@router.put("update/{id}")
-def update_vpn(id:int, update_vpn:schemas.VpnUpdateCliente, db:Session=Depends(get_db)):
-    vpn_query=db.query(models.Vpn).filter(models.Vpn.id==id)
-    vpn=vpn_query.first()
-    if vpn==None:
-        raise  HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail =f"VPN con ID  {id} no existente")
-    vpn_query.update(update_vpn.model_dump(), synchronize_session=False)
-    db.commit()
-    return{'data':vpn_query.first()}"""
 
 @router.get("/vpns/edit/{id}")
 def edit(request: Request, id: int, db: Session = Depends(get_db)):
