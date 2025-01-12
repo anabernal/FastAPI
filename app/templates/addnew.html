@@ -38,30 +38,30 @@
     </div> 
     <div class="mb-3">
         <label>Version de equipo de Roshka</label>
-        <input type = "text" name = "versionEquipoRoshka" placeholder = "Version del sistema operativo del equipo*" class="form-control" />
+        <input type = "text" name = "versionEquipoRoshka" placeholder = "Version del sistema operativo del equipo*" class="form-control" required />
     </div>
     <div class="mb-3">
         <label>Marca de Equipo de Cliente</label>
-        <input type = "text" name = "marcaEquipoCliente" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" />
+        <input type = "text" name = "marcaEquipoCliente" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" required/>
     </div>
     <div class="mb-3">
         <label>Version de equipo de Cliente</label>
-        <input type = "text" name = "versionEquipoCliente" placeholder = "Version del sistema operativo del equipo*" class="form-control" />
+        <input type = "text" name = "versionEquipoCliente" placeholder = "Version del sistema operativo del equipo*" class="form-control" required/>
     </div>
     <div class="mb-3">
         <label>Clave compartida</label>
-        <input type = "password" id= "claveCompartida" name = "claveCompartida" placeholder = "Clave compartida*" class="form-control" />
+        <input type = "password" id= "claveCompartida" name = "claveCompartida" placeholder = "Clave compartida*" class="form-control" required />
     </div>
     <div class="mb-3">
         <label for="esquemaDeEncriptacion">Esquema de Encriptacion</label>
-        <select name="esquemaDeEncriptacion" id="esquemaDeEncriptacion" class="form-control">
+        <select name="esquemaDeEncriptacion" id="esquemaDeEncriptacion" class="form-control" required>
             <option value="IKEv1">IKEv1</option>
             <option value="IKEv2">IKEv2</option>
           </select>
     </div>
     <div class="mb-3">
         <label for="grupoDH">Grupo DH</label>
-        <select name="grupoDH" id="grupoDH" class="form-control">
+        <select name="grupoDH" id="grupoDH" class="form-control" required>
             <option value="2">2</option>
             <option value="5">5</option>
             <option value="14">14</option>
@@ -72,7 +72,7 @@
     </div>
     <div class="mb-3">
         <label for="algoritmoEncriptacion_fase1">Algortimo de encriptacion (Fase 1)</label>
-        <select name="algoritmoEncriptacion_fase1" id="algoritmoEncriptacion_fase1" class="form-control">
+        <select name="algoritmoEncriptacion_fase1" id="algoritmoEncriptacion_fase1" class="form-control" required>
             <option value="AES-128">AES-128</option>
             <option value="AES-192">AES-192</option>
             <option value="AES-256">AES-256</option>
@@ -81,7 +81,7 @@
     </div>
     <div class="mb-3">
         <label for="hash_fase1">Hash(Fase 1)</label>
-        <select name="hash_fase1" id="hash_fase1" class="form-control">
+        <select name="hash_fase1" id="hash_fase1" class="form-control" required>
             <option value="SHA-1">SHA-1</option>
             <option value="SHA-256">SHA-256</option>
             <option value="SHA-384">SHA-384</option>
@@ -91,11 +91,11 @@
     </div>
     <div class="mb-3">
         <label>Lifetime (Fase 1)</label>
-        <input type = "Integer" name = "lifetime_fase1" placeholder = "Tiempo en segundos*" class="form-control" />
+        <input type = "Integer" name = "lifetime_fase1" placeholder = "Tiempo en segundos*" class="form-control" required/>
     </div>
     <div class="mb-3">
             <label for="algoritmoEncriptacion_fase2">Algortimo de encriptacion (Fase 1)</label>
-            <select name="algoritmoEncriptacion_fase2" id="algoritmoEncriptacion_fase2" class="form-control">
+            <select name="algoritmoEncriptacion_fase2" id="algoritmoEncriptacion_fase2" class="form-control" required>
                 <option value="AES-128">AES-128</option>
                 <option value="AES-192">AES-192</option>
                 <option value="AES-256">AES-256</option>
@@ -104,7 +104,7 @@
     </div>
     <div class="mb-3">
         <label for="hash_fase2">Hash(Fase 1)</label>
-        <select name="hash_fase2" id="hash_fase2" class="form-control">
+        <select name="hash_fase2" id="hash_fase2" class="form-control" required>
             <option value="SHA-1">SHA-1</option>
             <option value="SHA-256">SHA-256</option>
             <option value="SHA-384">SHA-384</option>
@@ -114,7 +114,7 @@
     </div>
     <div class="mb-3">
         <label for="pfs">PFS</label>
-        <select name="pfs" id="pfs" class="form-control">
+        <select name="pfs" id="pfs" class="form-control" required>
             <option value="SI">SI</option>
             <option value="NO">NO</option>
           </select>
@@ -122,15 +122,15 @@
 <div class="mb-3">
     <div class="mb-3">
         <label>Lifetime (Fase 2)</label>
-        <input type = "Integer" name = "lifetime_fase2" placeholder = "Tiempo en segundos" class="form-control" />
+        <input type = "Integer" name = "lifetime_fase2" placeholder = "Tiempo en segundos" class="form-control" required />
 </div>
 <div class="mb-3">
     <label>Dominio de Encriptacion de Roshka</label>
-    <input type = "text" name = "dominioEncriptacionRoshka" placeholder = "Red/redes de Roshka que se conectaran a la Red del cliente*" class="form-control" />
+    <input type = "text" name = "dominioEncriptacionRoshka" placeholder = "Red/redes de Roshka que se conectaran a la Red del cliente*" class="form-control" required/>
 </div>
 <div class="mb-3">
     <label>Dominio de Encriptacion de Cliente</label>
-    <input type = "text" name = "dominoEncriptacionCliente" placeholder = "Red/redes del Cliente que se conectaran a la red de Roshka*" class="form-control" />
+    <input type = "text" name = "dominoEncriptacionCliente" placeholder = "Red/redes del Cliente que se conectaran a la red de Roshka*" class="form-control" required/>
 </div>
 
     <input type = "submit" value = "Submit" class="btn btn-primary mb-3"/>  
