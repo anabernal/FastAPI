@@ -60,9 +60,18 @@ async def root():
 http://127.0.0.1:8000/vpns  
 **5. Pagina principal:**  
 Se visualizan los atributos basicos de la VPN, como ID, Nombre del cliente externo, rol de la VPN(Primario o Secundario) y las acciones que se puedan realizar con el registro, como editar, editar los parametros del cliente, eliminar y visualizar a traves del formato  json.  
-![image](https://github.com/user-attachments/assets/fd8dc21e-29e7-411e-bb9b-3810a86585ac)
+![image](https://github.com/user-attachments/assets/fd8dc21e-29e7-411e-bb9b-3810a86585ac)  
+## 4. Documentos de API iteractivos:
+Navegar hasta el link  
+http://127.0.0.1:8000/docs  
+![image](https://github.com/user-attachments/assets/7de89b38-71a3-4fd5-99f4-7451fdf9f864)  
+Para ver la documentación automática alternativa (proporcionada por ReDoc), navegar hasta el link:  
+http://127.0.0.1:8000/redoc  
+![image](https://github.com/user-attachments/assets/2518454e-287c-4a35-b38e-15a29383cd07)  
 
-## 4. Futuras mejoras:  
+
+
+## 5. Futuras mejoras:  
 *  Autenticación de usuarios para ingresar a la aplicacion con sus correspondientes permisos para editar discriminando por tipos de usuarios (externos e internos)  
 *  Validaciones para ingresar correctamente las IPs publicas e IPs privadas  
 *  Botón de script para generar configuraciones dependiendo de la marca del dispositivo  
