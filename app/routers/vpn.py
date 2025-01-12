@@ -20,7 +20,10 @@ router.mount("/routers/vpns",StaticFiles(directory="app/routers/"))
 
 def validarIpPublica(ip):
     if (IPv4Address(ip) in IPv4Network("10.0.0.0/8")) or (IPv4Address(ip) in IPv4Network("172.16.0.0/12"))  or (IPv4Address(ip) in IPv4Network("192.168.0.0/16")):
-         
+         return False
+    else:
+        return True
+
 
 @router.get("/vpns")
 def get_vpns(request:Request, db:Session=Depends(get_db)):

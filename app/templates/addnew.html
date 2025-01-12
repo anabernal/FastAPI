@@ -1,31 +1,40 @@
 {% extends 'base.html' %}
  
 {% block content %}
-<form action = "/vpns/add" method = "post"> 
+<form action = "/vpns/add" method = "post" class="row g-3 needs-validation" novalidate> 
     <div class="mb-3">
-        <label>Cliente Externo</label>
-        <input type = "text" name = "nombreClienteExterno" placeholder = "Nombre del Cliente Externo*" class="form-control" />
+        <label for="validationCustom01" class="form-label">Cliente Externo</label>
+        <input type = "text" name = "nombreClienteExterno" placeholder = "Nombre del Cliente Externo*" class="form-control" required/>
+
     </div> 
     <div class="mb-3">
         <label for="rol">Rol</label>
-        <select name="rol" id="rol" class="form-control">
+        <select name="rol" id="rol" class="form-control" required>
             <option value="Primario">Primario</option>
             <option value="Secundario">Secundario</option>
           </select>
     </div>
     <div class="mb-3">
-        <label>Direccion publica Roshka</label>
+        <label>Direccion de IP Publica de Roshka</label>
         <input type = "text" name = "direccionIPRoshka" placeholder = "IP Publica Roshka*" class="form-control" id="direccionIPRoshka"
         pattern="^(?!10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-5])\.(?:\d{1,3})\.(?:\d{1,3})\.(?:\d{1,3})$" 
-        required  />
+        required/>
+        <div class="invalid-feedback">
+            Ingrese una IP Publica válida
+        </div>
     </div> 
     <div class="mb-3">
-        <label>Direccion IP cliente</label>
-        <input type = "text" name = "direccionIPCliente" placeholder = "IP Publica del Cliente*" class="form-control" />
+        <label>Direccion de IP Publica del Cliente</label>
+        <input type = "text" name = "direccionIPCliente" placeholder = "IP Publica del Cliente*" class="form-control" 
+        pattern="^(?!10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-5])\.(?:\d{1,3})\.(?:\d{1,3})\.(?:\d{1,3})$" 
+        required/>
+        <div class="invalid-feedback">
+            Ingrese una IP Publica válida
+        </div>
     </div> 
     <div class="mb-3">
         <label>Marca  de Equipo de Roshka</label>
-        <input type = "text" name = "marcaEquipoRoshka" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" />
+        <input type = "text" name = "marcaEquipoRoshka" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" required/>
     </div> 
     <div class="mb-3">
         <label>Version de equipo de Roshka</label>
@@ -125,6 +134,29 @@
 </div>
 
     <input type = "submit" value = "Submit" class="btn btn-primary mb-3"/>  
+    
  </form> 
-  
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+ 
 {% endblock content %}
