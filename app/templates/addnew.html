@@ -35,18 +35,30 @@
     <div class="mb-3">
         <label>Marca  de Equipo de Roshka</label>
         <input type = "text" name = "marcaEquipoRoshka" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" required/>
+        <div class="invalid-feedback">
+            Campo obligatorio
+        </div>
     </div> 
     <div class="mb-3">
         <label>Version de equipo de Roshka</label>
         <input type = "text" name = "versionEquipoRoshka" placeholder = "Version del sistema operativo del equipo*" class="form-control" required />
+        <div class="invalid-feedback">
+            Campo obligatorio
+        </div>
     </div>
     <div class="mb-3">
         <label>Marca de Equipo de Cliente</label>
         <input type = "text" name = "marcaEquipoCliente" placeholder = "Marca de dispositivo del router o equipo de borde*" class="form-control" required/>
+        <div class="invalid-feedback">
+            Campo obligatorio
+        </div>
     </div>
     <div class="mb-3">
         <label>Version de equipo de Cliente</label>
         <input type = "text" name = "versionEquipoCliente" placeholder = "Version del sistema operativo del equipo*" class="form-control" required/>
+        <div class="invalid-feedback">
+           Campo obligatorio
+        </div>
     </div>
     <div class="mb-3">
         <label>Clave compartida</label>
@@ -92,6 +104,9 @@
     <div class="mb-3">
         <label>Lifetime (Fase 1)</label>
         <input type = "Integer" name = "lifetime_fase1" placeholder = "Tiempo en segundos*" class="form-control" required/>
+        <div class="invalid-feedback">
+            Ingrese un valor numerico válido
+        </div>
     </div>
     <div class="mb-3">
             <label for="algoritmoEncriptacion_fase2">Algortimo de encriptacion (Fase 1)</label>
@@ -126,11 +141,17 @@
 </div>
 <div class="mb-3">
     <label>Dominio de Encriptacion de Roshka</label>
-    <input type = "text" name = "dominioEncriptacionRoshka" placeholder = "Red/redes de Roshka que se conectaran a la Red del cliente*" class="form-control" required/>
+    <input type = "text" name = "dominioEncriptacionRoshka" placeholder = "Red/redes de Roshka que se conectaran a la Red del cliente* Ejemplo:192.168.10.0/24, 192.168.11.0/24" class="form-control" required/>
+    <div class="invalid-feedback">
+        Ingrese uno o mas segmentos válidos
+      </div>
 </div>
 <div class="mb-3">
     <label>Dominio de Encriptacion de Cliente</label>
-    <input type = "text" name = "dominoEncriptacionCliente" placeholder = "Red/redes del Cliente que se conectaran a la red de Roshka*" class="form-control" required/>
+    <input type = "text" name = "dominoEncriptacionCliente" placeholder = "Red/redes del Cliente que se conectaran a la red de Roshka* Ejemplo:192.168.10.0/24, 192.168.11.0/24" class="form-control" required/>
+    <div class="invalid-feedback">
+      Ingrese uno o mas segmentos válidos
+    </div>
 </div>
 
     <input type = "submit" value = "Submit" class="btn btn-primary mb-3"/>  
