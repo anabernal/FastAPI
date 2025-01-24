@@ -18,12 +18,6 @@ router=APIRouter(
 )
 router.mount("/routers/vpns",StaticFiles(directory="app/routers/"))
 
-def validarIpPublica(ip):
-    if (IPv4Address(ip) in IPv4Network("10.0.0.0/8")) or (IPv4Address(ip) in IPv4Network("172.16.0.0/12"))  or (IPv4Address(ip) in IPv4Network("192.168.0.0/16")):
-         return False
-    else:
-        return True
-
 
 @router.get("/vpns")
 def get_vpns(request:Request, db:Session=Depends(get_db)):
@@ -94,7 +88,7 @@ def create_vpns(vpn:schemas.VpnCreate, db:Session=Depends(get_db)):
     return{"data":new_vpn}
 
 @router.get("/vpns/addnew")
-async def addnew(request: Request):
+def addnew(request: Request):
     return templates.TemplateResponse("addnew.html", {"request": request})
 
 @router.get("/vpns/{id}")
