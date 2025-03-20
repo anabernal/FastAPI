@@ -32,7 +32,7 @@ Cuenta con todas las tareas de CRUD ademas de una visualizacion de JSON por cada
 ## Configuración:
 **1. En el archivo database.py, modificar las credenciales de base de datos en la línea:**  
 ```SQLALCHEMY_URL_DATABASE='postgresql://postgres:postgres@localhost:5432/fastapi'  ```  
-Campos: basededatos://usuario:contraseña**
+Campos: basededatos://usuario:contraseña
 **2. De ser necesario, crear el main.py en el directorio /app:**  
 ```
 from fastapi.templating import Jinja2Templates
